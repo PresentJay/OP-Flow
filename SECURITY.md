@@ -1,5 +1,11 @@
 # Security Policy
 
+---
+
+# 아직 작업되지 않은 공간입니다.
+
+---
+
 ## Supported Versions
 
 Use this section to tell people about which versions of your project are
