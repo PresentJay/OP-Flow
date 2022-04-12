@@ -1,17 +1,5 @@
 #!/bin/bash
 
-# -*- coding: utf-8 -*-
-
-: <<'END'
-Google style docstrings.
-
-This module ... implements
-    
-[Example]:
-    ...
-[Attributes]:
-    ...
-END
 checkOS(){
     case $(uname -s) in
         "Darwin"*) OSname="mac" ;;
@@ -57,4 +45,10 @@ line() {
             echo -e "\n"
         done
     fi
+}
+
+getenv() {
+    set -o allexport
+    source $1.env set
+    +o allexport
 }
