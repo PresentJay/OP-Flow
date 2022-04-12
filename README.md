@@ -1,5 +1,21 @@
 # 작업관련 임시 문서
 
+
+## Get Started
+
+`bash scripts/docker-manager.sh -n opflow`
+
+`bash scripts/docker-manager.sh -b django opflow`
+
+`bash scripts/docker-manager.sh -u dev`
+
+
+## Container environments
+
+- OS: Ubuntu 20.04
+- Python: 3.10
+- Django: 4.04
+
 ## TODO
 
 - [x] django docker 동작확인
@@ -26,3 +42,8 @@
     - [ ] TODO: django에서 docstring & docs generator는 어떤식으로 사용하는지 조사 필요
 - [ ] coding-style 관리 (linter-formatter CI level에서 action으로 지원하기)
     - [ ] Survey [DjangoDocs](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/)
+- [ ] Object Storage 필요성 파악 및 Apache Spark 도입 고려하기
+- [x] Dockerfile 작성 최적화
+- [ ] Redis 캐싱 적용 (Django 4.0)
+- [ ] Monitoring 적용
+- [ ] MQ가 필요한가?

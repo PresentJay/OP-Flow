@@ -1,16 +1,27 @@
 FROM ubuntu:20.04
 
 RUN apt-get update
+RUN apt-get install curl -y
+RUN apt-get install vim -y
+RUN apt-get install net-tools -y
 
-RUN apt install -y python3.9
-RUN apt install -y python3.9-dev libpq-dev
+RUN apt install software-properties-common -y
+RUN add-apt-repository ppa:deadsnakes/ppa -y
 
-RUN apt-get install -y net-tools
-RUN apt-get install -y dnsutils
-RUN apt-get update
+RUN apt install python3.10 -y
+RUN apt install python3.10-dev -y
+RUN apt install python3.10-distutils -y
+RUN apt install python3.10-lib2to3 -y
 
-ENV PYTHONUNBUFFERED 0
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN python3.10 get-pip.py
+
+RUN python3.10 -m pip install --upgrade pip
 
 WORKDIR /home
 
-ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh .
+COPY ./requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+ENV PYTHONUNBUFFERED=1
+

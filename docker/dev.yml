@@ -7,18 +7,19 @@ services:
       - postgres-dev-data:/var/lib/postgresql/data
     env_file: ../environments/postgres-docker.env
   django:
-    build:
-      context: ./Dockerfile
-      dockerfile: django
+    image: opflow/django
     env_file: ../environments/django-docker.env
     volumes:
-      - ./:/home/
+      - ../:/home/
     working_dir: /home/
+    depends_on:
+      - postgres
     ports:
       - "8000:8000"
     command: >
       bash -c "
-      sleep 50000"
+      python3.10 manage.py migrate
+      && python3.10 manage.py runserver 0.0.0.0:8000"
 volumes:
   postgres-dev-data:
 networks:

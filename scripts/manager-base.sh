@@ -9,17 +9,17 @@ checkOS(){
     echo ${OSname}
 }
 
-helpHead() {
-    echo -e "\nbash $1 [Options ...]"
-    content h "help" "print help messages"
-}
-
 helpContent() {
     if [[ $# -eq 3 ]]; then
         echo -e "\t[-$1, --$2]\t$3"
     elif [[ $# -eq 2 ]]; then
         echo -e "\t[--$1]\t$2"
     fi
+}
+
+helpHead() {
+    echo -e "\nbash $1 [Options ...]"
+    helpContent h "help" "print help messages"
 }
 
 helpTail() {
@@ -30,6 +30,10 @@ helpTail() {
 kill() {
     echo >&2 "[WARNING] $@"
     exit 1
+}
+
+success() {
+    echo "[SUCCESS] $@"
 }
 
 bar() {
@@ -49,6 +53,17 @@ line() {
 
 getenv() {
     set -o allexport
-    source $1.env set
-    +o allexport
+    source $1.env set +o allexport
+}
+
+loop_to_success() {
+    getenv ./environments/manager-config
+    for (( iter=1; iter>0; iter++ )) ; do
+        if ${SILENT}; then
+            echo "try to exec command: '$@' (${iter}/${ITERATION_LIMIT} trials)";
+        fi
+        eval $@ && break;
+        sleep 2;
+        if [[ iter -eq ${ITERATION_LIMIT} ]]; then kill "command iteration is close to limit > exit. (${iter}/${ITERATION_LIMIT} failed)"; fi;
+    done
 }
