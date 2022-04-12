@@ -22,3 +22,7 @@
     - [ ] Survey [Qiita](https://qiita.com/futakuchi0117/items/4d3997c1ca1323259844) (Sphinx)
 - [ ] docstring 관리
     - [ ] Survey [BlogPost1](https://engineer-mole.tistory.com/136) (Google Docstring)
+    - [ ] Survey [VScodeMarkey](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) (docstring generator extension)
+    - [ ] TODO: django에서 docstring & docs generator는 어떤식으로 사용하는지 조사 필요
+- [ ] coding-style 관리 (linter-formatter CI level에서 action으로 지원하기)
+    - [ ] Survey [DjangoDocs](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/)
