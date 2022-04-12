@@ -13,9 +13,12 @@ services:
     env_file: ../environments/django-docker.env
     volumes:
       - ./:/home/
-    working_dir: /home
+    working_dir: /home/
     ports:
       - "8000:8000"
+    command: >
+      bash -c "
+      sleep 50000"
 volumes:
   postgres-dev-data:
 networks:

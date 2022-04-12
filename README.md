@@ -18,3 +18,7 @@
 - [ ] django secret 관리
     - [ ] Survey [BlogPost1](https://velog.io/@kyeongraekim/Django-TI (django-environ package)
 - [ ] django test 관리
+- [ ] docs 관리
+    - [ ] Survey [Qiita](https://qiita.com/futakuchi0117/items/4d3997c1ca1323259844) (Sphinx)
+- [ ] docstring 관리
+    - [ ] Survey [BlogPost1](https://engineer-mole.tistory.com/136) (Google Docstring)

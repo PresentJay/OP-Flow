@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
 RUN apt-get update
+
 RUN apt install -y python3.9
 RUN apt install -y python3.9-dev libpq-dev
 
@@ -11,3 +12,5 @@ RUN apt-get update
 ENV PYTHONUNBUFFERED 0
 
 WORKDIR /home
+
+ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh .
