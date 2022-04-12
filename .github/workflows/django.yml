@@ -15,18 +15,13 @@ env:
   POSTGRES_HOST: ${{secrets.POSTGRES_HOST}}
   POSTGRES_PORT: ${{secrets.POSTGRES_PORT}}
   POSTGRES_INITDB_ARGS: ${{secrets.POSTGRES_INITDB_ARGS}}
-  
-
 jobs:
   build:
-
     runs-on: ubuntu:20.04
-
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.7, 3.8, 3.9]
-        
+        python-version: [3.8, 3.9]
     services:
       postgres:
         image: postgres:13-alpine
@@ -37,8 +32,6 @@ jobs:
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
