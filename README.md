@@ -10,6 +10,9 @@
 `bash scripts/docker-manager.sh -u dev`
 
 
+[![CodeQL](https://github.com/PresentJay/OP.Flow/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/PresentJay/OP.Flow/actions/workflows/codeql-analysis.yml)
+[![Django CI](https://github.com/PresentJay/OP.Flow/actions/workflows/django.yml/badge.svg)](https://github.com/PresentJay/OP.Flow/actions/workflows/django.yml)
+
 ## Container environments
 
 - OS: Ubuntu 20.04
