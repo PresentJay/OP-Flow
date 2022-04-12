@@ -1,0 +1,28 @@
+version: '3.5'
+services:
+  postgres:
+    image: postgres:13-alpine
+    restart: always
+    volumes:
+      - postgres-dev-data:/var/lib/postgresql/data
+    env_file: ../environments/postgres-docker.env
+  django:
+    image: opflow/django
+    env_file: ../environments/django-docker.env
+    volumes:
+      - ../:/home/
+    working_dir: /home/
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    command: >
+      bash -c "
+      python3.10 manage.py migrate
+      && python3.10 manage.py runserver 0.0.0.0:8000"
+volumes:
+  postgres-dev-data:
+networks:
+  default:
+    external:
+      name: opflow-network
